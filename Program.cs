@@ -307,13 +307,13 @@ Console.WriteLine();
 //   Example: 100 credits and 3 crew -> each gets 33, 1 left over.
 
 int rationCredits = 100;
-int crewCount = 0;
-
-int perMember = rationCredits / crewCount;
-int leftover = rationCredits / crewCount;
+int crewCount = 1;
 
 Console.Write("How many crew members are sharing rations? ");
 crewCount = int.Parse(Console.ReadLine());
+
+int perMember = rationCredits / crewCount;
+int leftover = rationCredits - (rationCredits/crewCount) * crewCount; //----------
 
 Console.WriteLine("Each crew member gets: " + perMember + " credits");
 Console.WriteLine("Left over: " + leftover + " credits");

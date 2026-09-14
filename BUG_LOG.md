@@ -41,12 +41,14 @@ The first row is a worked example of the level of detail expected (it is **not**
 28 | Section 10 | 286 | Logic | Shows incorrect bay side | Changed "bay % 2 == 1" to "bay % 2 == 0"
 29 | Section 12 | 325 | Logic | Clearnace shows crew name | changed crewName to badgeId
 30 | Section 2 | 76 | Logic | Required to be an officer AND commander, which isn't possible | Changed "&&" to "||" |
-31
-32
-33
+31  | Section 11 | 310 | Runtime | Tries to divide rationCredits by 0 | Changed 0 to 1
+32 | Section 11 | 312-313 | Calculations happen too early | Moved perMember and leftover values to 315 and 316
+33 Section 11 | 316 | Calculations were the same as 315 | Now subtracts rationCredits by rationCredits divided by crewCount which is then multiplied by crewCount
 
 ## Reflection (a few sentences)
 
 Which bug took you the longest to find, and why?
+Response: bugs 44 to 46 took the longest because they were interconnected and required a lot of calculations
 
 Which kind of bug (syntax, runtime, logic) do you think is the hardest to catch? Why?
+Response: I had the hardest time fixing Logic bugs as it was difficult to how exact the fix needed to be. Also because finding the Syntax and Runtime errors were a lot easier to find.
