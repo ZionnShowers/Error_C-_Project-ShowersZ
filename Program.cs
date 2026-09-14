@@ -31,8 +31,8 @@ string crewName = Console.ReadLine();
 
 Console.WriteLine("Welcome aboard, " + crewName + "!");
 
-char firstLetter = crewName[1];
-char lastLetter = crewName[crewName.Length];
+char firstLetter = crewName[0];
+char lastLetter = crewName[crewName.Length - 1];
 
 Console.WriteLine("First letter of your name: " + firstLetter);
 Console.WriteLine("Last letter of your name:  " + lastLetter);
@@ -54,7 +54,7 @@ Console.WriteLine();
 
 Console.Write("Enter your age: ");
 string ageInput = Console.ReadLine();
-int age = int.Parse(crewName);
+int age = int.Parse(ageInput);
 
 string clearance;
 
@@ -73,7 +73,7 @@ else
 
 Console.WriteLine("Clearance level: " + clearance);
 
-if (clearance == "OFFICER" && clearance == "COMMANDER")
+if (clearance == "OFFICER" || clearance == "COMMANDER") //
 {
     Console.WriteLine("Airlock access: GRANTED");
 }
@@ -101,7 +101,7 @@ do
 {
     Console.Write("Enter the 4-digit airlock code: ");
     int codeGuess = int.Parse(Console.ReadLine());
-    attempts = 1;
+    attempts = attempts + 1;
 
     if (codeGuess == secretCode)
     {
@@ -138,9 +138,9 @@ Console.WriteLine();
 
 string callSign = "ORION";
 
-for (int i = 0; i <= callSign.Length; i++)
+for (int i = 0; i <= callSign.Length - 1; i++)
 {
-    Console.WriteLine("Letter " + i + 1 + ": " + callSign[i]);
+    Console.WriteLine("Letter " + (i + 1) + ": " + callSign[i]);
 }
 
 Console.Write("Backwards: ");
@@ -163,15 +163,15 @@ Console.WriteLine();
 //   Example: 80, 65, 90, 42, 85 -> total 362, average 72.4
 // Finally print how many tanks are below 50%.
 
-int totalFuel = 0;
+double totalFuel = 0;
 int lowTanks = 0;
 
-for (int tank = 1; tank < 5; tank++)
+for (int tank = 1; tank < 6; tank++)
 {
     Console.Write("Fuel level for Tank " + tank + ": ");
     int level = int.Parse(Console.ReadLine());
 
-    totalFuel = level;
+    totalFuel += level;
 
     if (level < 50)
     {
@@ -202,10 +202,10 @@ int packPrice = 12;
 Console.Write("How many ration packs do you need? ");
 int quantity = int.Parse(Console.ReadLine());
 
-int subtotal = packPrice + quantity;
+int subtotal = packPrice * quantity; 
 Console.WriteLine("Subtotal: " + subtotal + " credits");
 
-double finalTotal = subtotal * 0.10;
+double finalTotal = subtotal * 1.10;
 
 if (quantity >= 10)
 {
@@ -225,13 +225,12 @@ Console.WriteLine();
 // Count down from 10 to 1, printing each number on its own line.
 // After the countdown is finished, print "LIFTOFF!" exactly once.
 
-for (int i = 10; i > 1; i--)
+for (int i = 10; i > 0; i--)
 {
     Console.WriteLine(i);
-    Console.WriteLine("LIFTOFF!");
 }
+Console.WriteLine("LIFTOFF!");
 Console.WriteLine();
-
 
 // ---------- SECTION 8: SIGNAL PINGS ----------
 // Send exactly 5 pings. Print "Ping 1", "Ping 2", ... "Ping 5",
@@ -240,7 +239,7 @@ Console.WriteLine();
 int pings = 1;
 while (pings <= 5)
 {
-    Console.WriteLine("Ping " + pings);
+    Console.WriteLine("Ping " + (pings++)); //--------
 }
 Console.WriteLine("Signal locked.");
 Console.WriteLine();
@@ -260,7 +259,7 @@ int rows = int.Parse(Console.ReadLine());
 
 for (int row = 1; row <= rows; row++)
 {
-    for (int star = 1; star <= rows; star++)
+    for (int star = 1; star <= row; star++)
     {
         Console.Write("*");
     }
@@ -284,7 +283,7 @@ if (bay < 1 || bay > 20)
 {
     Console.WriteLine("Invalid bay number");
 }
-else if (bay % 2 == 1)
+else if (bay % 2 == 0)
 {
     Console.WriteLine("Bay " + bay + " is on the PORT side");
 }
@@ -323,7 +322,7 @@ Console.WriteLine();
 
 Console.WriteLine("========== FINAL REPORT ==========");
 Console.WriteLine("Crew member:     " + crewName);
-Console.WriteLine("Clearance:       " + crewName);
+Console.WriteLine("Clearance:       " + badgeId);
 Console.WriteLine("Average fuel:    " + averageFuel + "%");
 Console.WriteLine("Airlock opened:  " + airlockOpen);
 Console.WriteLine("Systems check complete. Safe travels, " + crewName + "!");
